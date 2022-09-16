@@ -60,7 +60,9 @@ namespace sig {
     void File::open(const string& file, Disposition d)
     {
         fd_ = ::open(file.c_str(), d == Disposition::Read ? O_RDONLY : O_WRONLY | O_CREAT, 0666);
-        if (fd_ == -1) throw runtime_error("Failed to open file " + file);
+        if (fd_ == -1) {
+            throw runtime_error("Failed to open file " + file);
+        }
     }
 
     boost::asio::posix::stream_descriptor File::stream(io_context& io) const { return {io, fd_}; }

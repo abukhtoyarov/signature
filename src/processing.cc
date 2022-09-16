@@ -91,7 +91,8 @@ namespace sig {
             if (!processResult(worker)) break;
 
             // Is there new piece of data to processing?
-            if (isAnyData) consume(worker);
+            if (isAnyData)
+                consume(worker);
 
             ++i;
         }
@@ -99,6 +100,8 @@ namespace sig {
         cout << "[Processing] finished" << endl;
     }
 
-    void Processing::doWork() { io_.post(bind(&Processing::work, this)); }
+    void Processing::doWork() {
+        io_.post(bind(&Processing::work, this));
+    }
 
 }  // namespace sig

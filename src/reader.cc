@@ -57,7 +57,9 @@ namespace sig {
         };
 
         while (true)
-            if (!read()) break;
+            if (!read()) {
+                break;
+            }
     }
 
     void Reader::doWork()
