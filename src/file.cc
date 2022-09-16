@@ -59,7 +59,8 @@ namespace sig {
 
     void File::open(const string& file, Disposition d)
     {
-        fd_ = ::open(file.c_str(), d == Disposition::Read ? O_RDONLY : O_WRONLY | O_CREAT, 0666);
+        fd_ = ::open(file.c_str(),
+            d == Disposition::Read ? O_RDONLY : O_WRONLY | O_CREAT | O_TRUNC, 0666);
         if (fd_ == -1) {
             throw runtime_error("Failed to open file " + file);
         }

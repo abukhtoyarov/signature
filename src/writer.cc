@@ -64,7 +64,7 @@ namespace sig {
         }
         catch (std::exception& exc) {
             cerr << exc.what() << "\n";
-            cerr << "[Writer] Reader failed" << endl;
+            cerr << "[Writer] Cannot open file" << endl;
             terminate();
         }
     }

@@ -88,7 +88,8 @@ namespace sig {
         while (true) {
             auto& worker = workers_[i % workerNum];
 
-            if (!processResult(worker)) break;
+            if (!processResult(worker))
+                break;
 
             // Is there new piece of data to processing?
             if (isAnyData)
