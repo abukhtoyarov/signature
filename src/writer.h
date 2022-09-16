@@ -13,21 +13,25 @@
 namespace sig {
 
 class Writer {
- public:
-  Writer(::boost::asio::io_context& io, Context& ctx) : io_(io), ctx_(ctx) {}
+public:
+    Writer(::boost::asio::io_context& io, Context& ctx)
+        : io_(io)
+        , ctx_(ctx)
+    {
+    }
 
-  void doWork();
+    void doWork();
 
- protected:
-  void openOutputFile();
-  void work();
+protected:
+    void openOutputFile();
+    void work();
 
- private:
-  ::boost::asio::io_context& io_;
-  Context& ctx_;
-  File file_;
+private:
+    ::boost::asio::io_context& io_;
+    Context& ctx_;
+    File file_;
 };
 
-}  // namespace sig
+} // namespace sig
 
 #endif

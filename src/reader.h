@@ -13,25 +13,29 @@
 namespace sig {
 
 class Reader {
-  Reader() = delete;
-  Reader(Reader&&) = delete;
-  Reader(const Reader&) = delete;
+    Reader() = delete;
+    Reader(Reader&&) = delete;
+    Reader(const Reader&) = delete;
 
- public:
-  Reader(::boost::asio::io_context& io, Context& ctx) : io_(io), ctx_(ctx) {}
+public:
+    Reader(::boost::asio::io_context& io, Context& ctx)
+        : io_(io)
+        , ctx_(ctx)
+    {
+    }
 
-  void doWork();
+    void doWork();
 
- protected:
-  void openInputFile();
-  void work();
+protected:
+    void openInputFile();
+    void work();
 
- private:
-  ::boost::asio::io_context& io_;
-  Context& ctx_;
-  File file_;
+private:
+    ::boost::asio::io_context& io_;
+    Context& ctx_;
+    File file_;
 };
 
-}  // namespace sig
+} // namespace sig
 
 #endif

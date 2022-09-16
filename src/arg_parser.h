@@ -9,6 +9,6 @@ namespace sig {
 
 bool parse_command_line(int argc, const char** argv, Config&);
 
-}  // namespace sig
+} // namespace sig
 
 #endif
