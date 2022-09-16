@@ -19,9 +19,6 @@ Context get_context(int argc, const char** argv) {
     Config config;
 
     config.threadNum = thread::hardware_concurrency();
-
-    // two threads reserved for reader/writer and processing tasks,
-    // also we need at least one worker
     config.workerNum = max(1, config.threadNum - 2);
 
     if (!parse_command_line(argc, argv, config))
@@ -47,7 +44,7 @@ int main(int argc, const char** argv) {
 
     io_context io;
 
-    // Reads from file.
+    // Read from file.
     Reader reader(io, ctx);
     reader.doWork();
 
