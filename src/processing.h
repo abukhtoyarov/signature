@@ -12,36 +12,32 @@
 
 namespace sig {
 
-class Processing {
-public:
-    Processing(::boost::asio::io_context& io, Context& ctx)
-        : io_(io)
-        , ctx_(ctx)
-    {
-    }
+    class Processing {
+    public:
+        Processing(::boost::asio::io_context& io, Context& ctx) : io_(io), ctx_(ctx) {}
 
-    void doWork();
+        void doWork();
 
-protected:
-    void spawnWorkers();
-    bool processResult(Worker& worker);
-    void consume(Worker& worker);
+    protected:
+        void spawnWorkers();
+        bool processResult(Worker& worker);
+        void consume(Worker& worker);
 
-    void work();
+        void work();
 
-private:
-    ::boost::asio::io_context& io_;
-    Context& ctx_;
+    private:
+        ::boost::asio::io_context& io_;
+        Context& ctx_;
 
-    unsigned spawned_ = 0;
-    std::vector<Worker> workers_;
+        unsigned spawned_ = 0;
+        std::vector<Worker> workers_;
 
-    unsigned i = 0;
-    bool isAnyData = true;
-    bool exit = false;
-    unsigned workerNum = 0;
-};
+        unsigned i = 0;
+        bool isAnyData = true;
+        bool exit = false;
+        unsigned workerNum = 0;
+    };
 
-} // namespace sig
+}  // namespace sig
 
 #endif
