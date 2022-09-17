@@ -1,0 +1,18 @@
+Language:        Cpp
+BasedOnStyle:  Google
+ColumnLimit: 100
+IndentWidth: 4
+AccessModifierOffset: -4
+AlignAfterOpenBracket: AlwaysBreak
+BinPackParameters: false
+BreakBeforeBraces: Stroustrup
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+FixNamespaceComments: true
+NamespaceIndentation: All
+PointerAlignment: Left
+
+#AllowShortFunctionsOnASingleLine: None
+#AlwaysBreakTemplateDeclarations: Yes
+#BreakBeforeBraces: Attach
+#PenaltyExcessCharacter: 10

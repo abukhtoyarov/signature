@@ -31,7 +31,11 @@
 *.out
 *.app
 
+<<<<<<< HEAD
 out/
 build/
 .vs/
 compile_commands.json
+=======
+build/*
+>>>>>>> 7d3552631bdab4f0bb3dafeb4970f4185403e767
