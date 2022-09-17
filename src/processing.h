@@ -28,8 +28,6 @@ namespace sig {
     private:
         ::boost::asio::io_context& io_;
         Context& ctx_;
-
-        unsigned spawned_ = 0;
         std::vector<Worker> workers_;
 
         unsigned i = 0;
