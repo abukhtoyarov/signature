@@ -18,9 +18,9 @@ namespace sig {
     {
         auto stream = file_.stream(io_);
 
-        auto write = [&](auto& data) {
+        auto write = [&](const string& data) {
             boost::system::error_code err;
-            auto wrote = file_.write(stream, data, err);
+            file_.write(stream, data, err);
             switch (err.value()) {
                 case success:
                     break;
@@ -40,7 +40,7 @@ namespace sig {
 
             switch (msg.state) {
                 case State::Ok:
-                    write(msg.data);
+                    write(msg.data + "\n");
                     break;
 
                 case State::Exit:

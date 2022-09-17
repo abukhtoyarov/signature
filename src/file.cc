@@ -40,7 +40,7 @@ namespace sig {
         return rd;
     }
 
-    size_t File::write(Stream& stm, string& buf, boost::system::error_code& err)
+    size_t File::write(Stream& stm, const string& buf, boost::system::error_code& err)
     {
         auto wrote = ::boost::asio::write_at(
             stm, offset_, ::boost::asio::buffer(buf.data(), buf.size()), err);
@@ -75,7 +75,7 @@ namespace sig {
             ::boost::asio::transfer_at_least(buf.size()), err);
     }
 
-    size_t File::write(Stream& stm, string& buf, boost::system::error_code& err)
+    size_t File::write(Stream& stm, const string& buf, boost::system::error_code& err)
     {
         return ::boost::asio::write(stm, ::boost::asio::buffer(buf.data(), buf.size()), err);
     }

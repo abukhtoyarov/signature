@@ -30,7 +30,7 @@ namespace sig {
         void open(const std::string& file, Disposition d);
         Stream stream(boost::asio::io_context& io) const;
         size_t read(Stream& stm, std::vector<char>& buf, boost::system::error_code& err);
-        size_t write(Stream& stm, std::string& buf, boost::system::error_code& err);
+        size_t write(Stream& stm, const std::string& buf, boost::system::error_code& err);
 
     private:
 #if (WIN32)
