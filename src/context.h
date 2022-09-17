@@ -35,8 +35,8 @@ namespace sig {
         using Buffer = ::boost::circular_buffer<T>;
 
     public:
-        Queue(size_t capacity) { 
-            buf_.set_capacity(capacity); 
+        Queue(size_t capacity) {
+            buf_.set_capacity(capacity);
         }
 
         void push(const T& block)
@@ -45,9 +45,9 @@ namespace sig {
 
             while (buf_.full()) {
                 full_.wait(lck);
-            } 
-            
-            buf_.push_back(move(block));
+            }
+
+            buf_.push_back(std::move(block));
             lck.unlock();
             empty_.notify_one();
         }
@@ -60,7 +60,7 @@ namespace sig {
                 empty_.wait(lck);
             }
 
-            block = move(buf_.front());
+            block = std::move(buf_.front());
             buf_.pop_front();
 
             lck.unlock();
