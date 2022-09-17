@@ -1,13 +1,19 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
 set(APP_NAME signature)
+
+project(${APP_NAME} CXX)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+if(MSVC)
+set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+set(CMAKE_CXX_FLAGS_RELEASE "/O2, /MT")
+else()
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-
-project(${APP_NAME} CXX)
+endif()
 
 # bootstrap conan
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
