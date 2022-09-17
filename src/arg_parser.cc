@@ -71,19 +71,19 @@ namespace sig {
 
     bool parse_command_line(int argc, const char** argv, Config& config)
     {
+        options_description desc{
+            "signature -i <input file> -o <output file> [-b <block "
+            "size>(b|Kb|Mb)]\n\n"
+            "Usage"};
+
+        desc.add_options()("help,h", "help screen")(
+            "input,i", value<string>()->required(), "input file stream")(
+            "output,o", value<string>()->required(), "output file stream")(
+            "block-size,b", value<string>()->default_value("1Mb"),
+            "block size is integer value with unit (possible unit values: b, Kb, "
+            "Mb; b - default)");
+
         try {
-            options_description desc{
-                "signature -i <input file> -o <output file> [-b <block "
-                "size>(b|Kb|Mb)]\n\n"
-                "Usage"};
-
-            desc.add_options()("help,h", "help screen")(
-                "input,i", value<string>()->required(), "input file stream")(
-                "output,o", value<string>()->required(), "output file stream")(
-                "block-size,b", value<string>()->default_value("1Mb"),
-                "block size is integer value with unit (possible unit values: b, Kb, "
-                "Mb; b - default)");
-
             variables_map vm;
             store(parse_command_line(argc, argv, desc), vm);
 
@@ -103,12 +103,13 @@ namespace sig {
             return true;
         }
         catch (const exception& e) {
+            cout << desc << "\n\n";
             cerr << "Error: " << e.what() << "\n";
             return false;
         }
         catch (...) {
-            cerr << "Unknown error"
-                 << "\n";
+            cout << desc << "\n\n";
+            cerr << "Unknown error" << "\n";
             return false;
         }
 

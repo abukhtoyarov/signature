@@ -23,7 +23,9 @@ Context get_context(int argc, const char** argv)
     config.threadNum = thread::hardware_concurrency();
     config.workerNum = max(1, config.threadNum - 2);
 
-    if (!parse_command_line(argc, argv, config)) throw runtime_error("Cannot parse commandline");
+    if (!parse_command_line(argc, argv, config)) {
+        exit(1);
+    }
 
     cout << "Signature file generating started."
          << "\n"
